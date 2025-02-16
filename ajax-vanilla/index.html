@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Counter</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const counterDisplay = document.getElementById("counter");
+            const increaseButton = document.getElementById("increase-btn");
+
+            // Function to fetch and display the current counter value
+            function fetchCounter() {
+                fetch("http://localhost:3001/number")
+                    .then(response => response.json())
+                    .then(data => {
+                        counterDisplay.textContent = data.number;
+                    })
+                    .catch(error => console.error("Error fetching counter:", error));
+            }
+
+            // Function to update the counter on button click
+            function updateCounter() {
+                fetch("http://localhost:3001/update", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    counterDisplay.textContent = data.number;
+                })
+                .catch(error => console.error("Error updating counter:", error));
+            }
+
+            // Load the counter when the page loads
+            fetchCounter();
+
+            // Attach event listener to the button
+            increaseButton.addEventListener("click", updateCounter);
+        });
+    </script>
+</head>
+<body>
+    <h1>AJAX Counter</h1>
+    <p>Current Count: <span id="counter">0</span></p>
+    <button id="increase-btn">Increase</button>
+</body>
+</html>
