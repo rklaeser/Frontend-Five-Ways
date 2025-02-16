@@ -1,0 +1,17 @@
+{
+  "name": "lit-mobx",
+  "version": "1.0.0",
+  "description": "Web component using Lit and MobX.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lit": "^3.2.1",
+    "mobx": "^6.13.6",
+    "mobx-lit-element": "^0.1.2"
+  }
+}
